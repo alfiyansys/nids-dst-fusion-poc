@@ -7,7 +7,7 @@ mechanism described in:
 
 > **Dempster-Shafer Theory-Based Sensor Fusion for Belief Quantification in
 > Multi-Engine Network Intrusion Detection Systems**
-> M. Alfiyan Syamsuddin — manuscript in preparation
+> M. Alfiyan Syamsuddin (manuscript in preparation)
 
 The paper's Fusion Engine is a Go module running inside the
 [Hyper-Parser](https://github.com/mata-elang-stable) pipeline on the Mata
@@ -42,24 +42,24 @@ independently checkable and visualizable, from a paper reader's machine,
 without needing the full Hyper-Parser Go build or the private infrastructure
 it was tested on. `dst_fusion/dst.py` and `dst_fusion/correlation.py` are
 deliberately kept numerically identical to the production module (same
-constants, same combination rule, same window semantics) — see each file's
+constants, same combination rule, same window semantics). See each file's
 module docstring for exactly which Go file and functions they mirror.
 
 ## Results reproduced here
 
 | | Paper (Table 2) | This repo (`run_simulation()`) |
 |---|---|---|
-| Mode A — Snort only | 5,000 | 5,000 |
-| Mode B — sidecar, no dedup | 10,000 | 10,000 |
-| Mode C — DST fusion | 6,047 | 6,047 |
+| Mode A (Snort only) | 5,000 | 5,000 |
+| Mode B (sidecar, no dedup) | 10,000 | 10,000 |
+| Mode C (DST fusion) | 6,047 | 6,047 |
 | Fusion rate | 98.8% | 98.8% |
 | Bel(TP), fused | 0.895 | 0.895 |
 | Bel(TP), Snort alone | 0.665 | 0.665 |
 | Bel(TP), Suricata alone | 0.612 | 0.612 |
 
 Every number in the right column is *computed* by running
-`dst_fusion.simulate.run_simulation()` — none of it is hardcoded to match
-the left column. See the caveat below for how that's possible.
+`dst_fusion.simulate.run_simulation()`. None of it is hardcoded to match
+the left column; see the caveat below for how that's possible.
 
 **Important caveat.** The paper's Table 2 comes from replaying a
 deterministic PCAP (`nids_test.pcap`, 6,000 flows) through a live
@@ -71,7 +71,7 @@ published numbers* (see that module's docstring for the derivation), then
 replays the resulting synthetic alert stream through the same ported
 DST + correlation code used everywhere else in this repository. It is a
 reproducibility aid that shows the algorithm can produce those results from
-first principles — not a re-run of the original experiment.
+first principles, not a re-run of the original experiment.
 
 The `data/fusible-sample/` walkthrough in the notebook, by contrast, uses
 **real** Snort/Suricata output (synthetic in content, genuine in format) with
@@ -111,4 +111,4 @@ uses a fixed seed, so results are deterministic across machines.
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+MIT, see [LICENSE](LICENSE).

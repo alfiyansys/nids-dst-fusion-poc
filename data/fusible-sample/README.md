@@ -36,5 +36,5 @@ exact-duplicate DOS detection).
 `notebooks/dst_fusion_analysis.ipynb` uses it to demonstrate the ported
 correlator against genuine engine output, then separately builds a
 calibrated 6,000-flow synthetic dataset (`dst_fusion.simulate`) to reproduce
-Table 2 itself — see that notebook section for why the two are kept
+Table 2 itself; see that notebook section for why the two are kept
 distinct rather than conflated.

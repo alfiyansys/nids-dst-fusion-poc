@@ -3,8 +3,8 @@
 Ported from the Go production module used by the Hyper-Parser fusion engine
 (``internal/fusion/dst.go`` in the Mata Elang Hyper-Parser codebase), which
 is the system this repository's accompanying paper reports on. The port is
-kept numerically identical — same mass constants, same combination rule, same
-belief/plausibility definitions — so results computed here match production.
+kept numerically identical: same mass constants, same combination rule, same
+belief/plausibility definitions, so results computed here match production.
 
 Frame of discernment: Theta = {TruePositive, FalsePositive}, encoded as a
 2-bit mask so that intersection is a plain bitwise AND:
@@ -42,7 +42,7 @@ class DST:
 
     ``engine_mass`` is the base m({TP}) for a medium-priority alert from that
     engine. ``silence_mass`` is m({FP}) assigned when an engine does NOT fire
-    within the correlation window — absence of corroboration is treated as
+    within the correlation window; absence of corroboration is treated as
     weak FP evidence ([4] Sec. 4).
 
     Defaults mirror ``NewDST()`` in dst.go: Snort and Suricata are treated as
