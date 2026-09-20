@@ -7,7 +7,7 @@ mechanism described in:
 
 > **Dempster-Shafer Theory-Based Sensor Fusion for Belief Quantification in
 > Multi-Engine Network Intrusion Detection Systems**
-> M. Alfiyan Syamsuddin — submitted to *Sinkron*
+> M. Alfiyan Syamsuddin — manuscript in preparation
 
 The paper's Fusion Engine is a Go module running inside the
 [Hyper-Parser](https://github.com/mata-elang-stable) pipeline on the Mata
