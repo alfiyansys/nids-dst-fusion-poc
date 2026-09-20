@@ -2,6 +2,7 @@
 name = "nids-dst-fusion-poc"
 version = "0.1.0"
 description = "Dempster-Shafer Theory sensor fusion for multi-engine NIDS alert correlation (PoC + supporting notebooks for the accompanying paper)"
+readme = "README.md"
 license = "MIT"
 requires-python = ">=3.12"
 dependencies = [
