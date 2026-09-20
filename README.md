@@ -1,5 +1,7 @@
 # nids-dst-fusion-poc
 
+[![notebook](https://github.com/alfiyansys/nids-dst-fusion-poc/actions/workflows/notebook.yml/badge.svg)](https://github.com/alfiyansys/nids-dst-fusion-poc/actions/workflows/notebook.yml)
+
 Python proof-of-concept and analysis notebook for the sensor-fusion
 mechanism described in:
 

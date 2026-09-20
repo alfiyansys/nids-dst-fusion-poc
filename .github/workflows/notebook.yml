@@ -1,0 +1,48 @@
+name: notebook
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  execute:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+        with:
+          version: "latest"
+
+      - name: Sync environment
+        run: uv sync --frozen
+
+      - name: Register notebook kernel
+        run: uv run python -m ipykernel install --user --name nids-dst-fusion-poc
+
+      - name: Execute notebook
+        run: >
+          uv run jupyter execute --inplace --kernel_name=nids-dst-fusion-poc
+          notebooks/dst_fusion_analysis.ipynb
+
+      - name: Verify Table 2 reproduction
+        run: |
+          uv run python -c "
+          from dst_fusion.simulate import run_simulation
+
+          r = run_simulation()
+          assert r.mode_a == 5000, f'Mode A = {r.mode_a}, expected 5000'
+          assert r.mode_b == 10000, f'Mode B = {r.mode_b}, expected 10000'
+          assert r.mode_c == 6047, f'Mode C = {r.mode_c}, expected 6047'
+          assert abs(r.fusion_rate - 0.988) < 0.001, f'fusion rate = {r.fusion_rate}'
+          print('Table 2 reproduction verified:', r.mode_a, r.mode_b, r.mode_c, round(r.fusion_rate, 4))
+          "
+
+      - name: Upload figures
+        uses: actions/upload-artifact@v4
+        with:
+          name: figures
+          path: figures/*.png
