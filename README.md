@@ -15,6 +15,10 @@ Elang NIDS platform. This repository ports that module's core algorithm to
 Python (`dst_fusion/`), verifies it against the paper's own reported
 numbers, and uses it to generate every figure referenced from the paper.
 
+**[Open the notebook](notebooks/dst_fusion_analysis.ipynb)** to read it on
+GitHub with every output and figure already rendered inline; no setup
+needed to see the results.
+
 ## What's here
 
 ```
