@@ -1,0 +1,42 @@
+{
+  "generated_at": "2026-03-27T01:41:43+07:00",
+  "type": "synthetic",
+  "description": "Temporally-aligned Snort and Suricata logs for fusion testing",
+  "snort_log": "snort_synthetic_20260327_014143.json",
+  "suricata_log": "suricata_synthetic_20260327_014143.json",
+  "time_range": {
+    "start": "2026-03-27T10:00:00.000000+0000",
+    "end": "2026-03-27T10:00:10.888888+0000"
+  },
+  "network": {
+    "attacker_ip": "10.0.0.50",
+    "target_ip": "192.168.1.100"
+  },
+  "fusion_scenarios": [
+    {
+      "type": "exact_duplicate",
+      "description": "Same SSH scan detected by both engines",
+      "signature": "ET SCAN Potential SSH Scan",
+      "ports": [22]
+    },
+    {
+      "type": "exact_duplicate",
+      "description": "Same SQL port scan detected by both engines",
+      "signatures": ["ET SCAN Suspicious inbound to mySQL port 3306", "ET SCAN Suspicious inbound to PostgreSQL port 5432", "ET SCAN Suspicious inbound to MSSQL port 1433"],
+      "ports": [3306, 5432, 1433]
+    },
+    {
+      "type": "complementary",
+      "description": "SSH scan + SSH protocol detection",
+      "snort": "SSH scan alert",
+      "suricata": "SSH protocol event",
+      "port": 22
+    },
+    {
+      "type": "exact_duplicate",
+      "description": "DOS attack detected by both engines",
+      "signature": "DOS HTTP POST attack detected",
+      "port": 80
+    }
+  ]
+}
